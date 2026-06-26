@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int shipWithinDays(vector<int>& weights, int days) {
+    long long sum=0;
+    int maxi=INT_MIN;
+    for(int i=0;i<weights.size();i++){
+        sum =sum+weights[i];
+        maxi=max(weights[i],maxi);
+    }
+    long long ans=LLONG_MAX;
+      int low=maxi,high=sum;
+      while(low<=high){
+        int day=1;
+     int load=0;
+      long long mid= (high+low)/2;
+      for(int i=0;i<weights.size();i++){
+        load=load+weights[i];
+        if(load>mid){
+            load=weights[i];
+            day++;
+        }
+      }
+      if(day<=days){
+        ans=min(mid,ans);
+      }
+      if(day>days){
+        low=mid+1;
+      }
+      else{
+        high=mid-1;
+      }
+      }
+      return ans;
+    }
+};
+   
