@@ -8,7 +8,7 @@ public:
         maxi=max(weights[i],maxi);
     }
     long long ans=LLONG_MAX;
-      int low=maxi,high=sum;
+      int low=maxi; long long high=sum;
       while(low<=high){
         int day=1;
      int load=0;
@@ -33,4 +33,5 @@ public:
       return ans;
     }
 };
+   
    
